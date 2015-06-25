@@ -1,0 +1,71 @@
+@charset "utf-8";
+/* CSS Document */
+
+body {
+  font-family: "Lato",sans-serif;
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+form{
+  width: 260px;
+}
+
+input[type="text"]{
+  padding: 10px 30px 10px 10px;
+  font-size: 16px;
+  border-radius: 4px;
+  border: 1px solid #cecece;
+  margin: 10px 10px;
+}
+
+input[type="button"]{
+  position: absolute;
+  margin: 10px 10px;
+  padding: 10px 20px 10px 20px;
+  font-size: 14px;
+  border: none;
+  background-color: #FF0000;
+  color: #ffffff;
+}
+
+.tabs{
+  /*display: none;*/
+}
+
+ol li{
+  list-style: none;
+}
+
+p#ver{
+  margin: 0 0 0 35px;
+  color: #c44a4e;
+  font-family: "arial";
+}
+td:last-child{
+  text-align: center;
+}
+
+
+h1{
+  margin: 0 0 10px 0;
+  font-family: "arial";
+}
+
+.form{
+  width: 100%;
+  background-color: #C5C5C5;
+  margin: 0 auto;
+}
+
+.green{
+  position: relative;
+  top: -40px;
+  left: 260px;
+  font-size: 16px;
+  color: #1AFF00;
+}
+
+.result{
+    margin: 50px 0 0 0;
+}
