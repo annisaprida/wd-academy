@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+    <title>| Form Validation |</title>
+    <!-- Custom styles for this template -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/signin.css" rel="stylesheet">
+    <link href="css/jquery-ui.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="tabviewer">
+                <div class="tabs" id="tab1">
+                    <form name="form" method="POST">
+                        <input type="text" class="name" name="txtName" placeholder="Your Name..." data-id = "name">
+                        <span class="glyphicon glyphicon-ok green" id="nameCorrect"></span><p id="ver" class="errName"></p>
+                        <input type="text" class="addr" name="txtAdr" placeholder="Your Address..." data-id="address"><label class="glyphicon glyphicon-ok green" id="addrCorrect"></label><p id="ver" class="errAddress"></p>
+                        <input type="text" class="email" name="txtEmail" placeholder="Your Email..." data-id = "email"><span class="glyphicon glyphicon-ok green" id="emailCorrect"></span><p id="ver" class="errEmail"></p>
+                        <input type="text" class="dob" id="datepicker" name="txtDob" placeholder="DD/MM/YYYY" data-id="Date of Birth"><span id="last" class="glyphicon glyphicon-ok green"></span><p id="ver" class="errDob"></p>
+                        <input type="button" class="submit" onclick="validate()" value="Submit">    
+                    </form>
+                </div>
+                <div class="result">
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/jquery-1.11.3.min.js"></script>
+    <script src="js/jquery-ui.js"></script>
+    <script src="js/fungsi.min.js"></script>
+    <script>
+        $("document").ready(function(){
+            $(".tabs").hide();
+            $(".green").hide();
+            $("#tab1").show();
+            $("#datepicker").datepicker();
+            $("#ver").hide();
+            $(".name").cek();
+            $(".addr").cek();
+            $(".email").cek();
+            $(".dob").cek();
+        })
+        function validate(){
+            var nama = document.forms["form"]["txtName"].value;
+            var alamat = document.forms["form"]["txtAdr"].value;
+            var email = document.forms["form"]["txtEmail"].value;
+            var dob = document.forms["form"]["txtDob"].value;
+            var emailReg=/^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+            var flag  = 0;
+            if(flag <= 0){
+                if(nama==null||nama==""){
+                    $(".errName").html("Please fill in your name.");
+                    $(".errName").fadeIn("slow");
+                    flag = 0;
+                }
+                else{
+                    $(".errName").fadeOut("slow");
+                    flag = 1;
+                }
+                if(alamat==null||alamat==""){
+                    $(".errAddress").html("Please fill in your Address.");
+                    $(".errAddress").fadeIn("slow");
+                    flag = 0;
+                }
+                else{
+                    $(".errAddress").slideUp("slow");
+                    flag = 1;
+                }
+                if(dob==null||dob==""){
+                    $(".errDob").html("Please fill in your date of birth.");
+                    $(".errDob").fadeIn("slow");
+                    flag = 0;
+                }
+                else{
+                    $(".errDob").fadeOut("slow");
+                    flag = 1;
+                }
+                if(email==null||email==""){
+                    $(".errEmail").html("Please fill in your valid email address.");
+                    $(".errEmail").fadeIn("slow");
+                    flag = 0;
+                }
+                else
+                {
+                    if(!emailReg.test(email)){
+                        $(".errEmail").html("Please fill in your valid email address.");
+                        $(".errEmail").fadeIn("slow");
+                        flag = 0;
+                    }
+                    else{
+                        $(".errEmail").fadeOut("slow");
+                        flag = 1;
+                    }
+                }
+            }
+            if(flag > 0){
+                var nama = $(".name").val();
+                var alamat = $(".addr").val();
+                var email = $(".email").val();
+                var dob = $(".dob").val();
+                $(".result").append("<p>Nama :"+nama+"</p>");
+                $(".result").append("<p>Alamat :"+alamat+"</p>");
+                $(".result").append("<p>Email :"+email+"</p>");
+                $(".result").append("<p>DOB :"+dob+"</p>");
+            } 
+        }
+    </script>
+  </body>
+</html>
